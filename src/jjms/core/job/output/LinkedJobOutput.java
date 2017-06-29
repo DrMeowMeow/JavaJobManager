@@ -6,6 +6,10 @@ import java.util.Queue;
 
 import jjms.core.job.IJobOutput;
 
+/**
+ * Queue based {@code IJobOutput} linker. Allows multiple {@code IJobOuput}s to be collected together and used as a single context.
+ * @author jared
+ */
 public class LinkedJobOutput implements IJobOutput
 {
 	private final IJobOutput[] mLinkedOutputs;
@@ -13,12 +17,20 @@ public class LinkedJobOutput implements IJobOutput
 	
 	private boolean mIsClosed = false;
 	
+	/**
+	 * Initialises a new instance of the {@code LinkedJobOutput}.
+	 * @param outputs array of {@code IJobOutput}s which will be linked into a single context.
+	 */
 	public LinkedJobOutput(IJobOutput[] outputs)
 	{
 		mLinkedOutputs = outputs;
 		mOutput = new PriorityQueue<String>();
 	}
 	
+	/**
+	 * Initialises a new instance of the {@code LinkedJobOuput}.
+	 * @param output {@code IJobOutput} which will be linked which will be linked into a single context.
+	 */
 	public LinkedJobOutput(IJobOutput output)
 	{
 		this(new IJobOutput[] { output });
@@ -57,5 +69,4 @@ public class LinkedJobOutput implements IJobOutput
 	{
 		return mIsClosed;
 	}
-
 }

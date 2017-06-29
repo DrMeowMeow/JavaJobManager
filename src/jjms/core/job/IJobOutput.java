@@ -3,13 +3,13 @@ package jjms.core.job;
 import java.io.IOException;
 
 /**
- * Represents the text base output for a job.
+ * Represents the text base output for a Job.
  * @author jared
  */
 public interface IJobOutput extends AutoCloseable
 {
 	/**
-	 * Add a new string entry to the job output.
+	 * Add a new string entry to the Job output.
 	 * @param output the string entry to add.
 	 */
 	public void add(String output);
@@ -20,8 +20,8 @@ public interface IJobOutput extends AutoCloseable
 	public void close() throws IOException;
 	
 	/**
-	 * Determines if this job output has been closed.
-	 * @return
+	 * Determines if this Job output has been closed.
+	 * @return the closed state of this {@code IJobOutput}.
 	 */
 	public boolean isClosed();
 }

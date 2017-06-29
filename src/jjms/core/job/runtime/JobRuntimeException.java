@@ -1,7 +1,7 @@
 package jjms.core.job.runtime;
 
 /**
- * Exception class to detail an error that occurred whilst running a job.
+ * Exception class to detail an error that occurred whilst running a Job.
  * @author jared
  */
 public class JobRuntimeException extends Exception

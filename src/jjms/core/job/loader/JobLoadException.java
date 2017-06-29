@@ -1,7 +1,7 @@
 package jjms.core.job.loader;
 
 /**
- * Exception class to detail an error that occurred whilst loading a job.
+ * Exception class to detail an error that occurred whilst loading a Job.
  * @author jared
  */
 public class JobLoadException extends Exception

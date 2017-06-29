@@ -1,7 +1,7 @@
 package jjms.core.job;
 
 /**
- * Represents the current progress of a given job.
+ * Represents the current progress of a given Job.
  * @author jared
  */
 public class JobProgress
@@ -19,8 +19,8 @@ public class JobProgress
 	}
 	
 	/**
-	 * Retrieves the percentage progress of the job.
-	 * @return
+	 * Retrieves the percentage progress of the Job.
+	 * @return the Job's current progress.
 	 */
 	public double getProgress()
 	{
@@ -28,8 +28,8 @@ public class JobProgress
 	}
 	
 	/**
-	 * Retrieves the action that the job is currently performing.
-	 * @return
+	 * Retrieves the action that the Job is currently performing.
+	 * @return the current action of the Job.
 	 */
 	public String getCurrentAction()
 	{
@@ -37,10 +37,10 @@ public class JobProgress
 	}
 	
 	/**
-	 * Sets the percentage progress of the job.
+	 * Sets the percentage progress of the Job.
 	 * @param value the new progress.
 	 */
-	public void setProgress(double value)
+	public synchronized void setProgress(double value)
 	{
 		if (value > 100.0)
 		{
@@ -58,10 +58,10 @@ public class JobProgress
 	}
 	
 	/**
-	 * Sets the action the job is currently performing.
+	 * Sets the action the Job is currently performing.
 	 * @param newAction the new action.
 	 */
-	public void setCurrentAction(String newAction)
+	public synchronized void setCurrentAction(String newAction)
 	{
 		if (newAction == null)
 		{

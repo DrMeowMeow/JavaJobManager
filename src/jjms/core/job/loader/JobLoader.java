@@ -4,7 +4,7 @@ import jjms.core.job.JobBase;
 import jjms.core.job.JobContext;
 
 /**
- * Static class to load a job.
+ * Provides the ability to load a Job.
  * @author jared
  */
 public final class JobLoader
@@ -17,10 +17,10 @@ public final class JobLoader
 	}
 	
 	/**
-	 * Loads a new instance of a job given the context.
-	 * @param ctx the context in which this job will be loaded.
-	 * @return the new instance of the job.
-	 * @throws JobLoadException thrown if an error occurs whilst loading the job.
+	 * Loads a new instance of a Job given the context.
+	 * @param ctx the context in which this Job will be loaded.
+	 * @return the new instance of the Job.
+	 * @throws JobLoadException thrown if an error occurs whilst loading the Job.
 	 */
 	public static JobBase load(JobContext ctx) throws JobLoadException
 	{
@@ -31,14 +31,15 @@ public final class JobLoader
 		
 		try
 		{
-			Class jobClass = Class.forName(ctx.getClassName(), true, ctx.getClassLoader());
-			if (jobClass == null || !JobBase.class.isAssignableFrom(jobClass))
-			{
-				throw new JobLoadException(String.format("Invalid job class %s.", ctx.getClassName()));
-			}
+			// Get the job class from the class loader
+			Class<? extends JobBase> jobClass = (Class<? extends JobBase>) Class.forName(ctx.getClassName(), true, ctx.getClassLoader());
 			
 			ctx.setJobClass(jobClass);
 			return (JobBase) jobClass.newInstance();
+		}
+		catch (ClassCastException ex)
+		{
+			throw new JobLoadException(String.format("Invalid job class %s.", ctx.getClassName()));
 		}
 		catch (ClassNotFoundException ex)
 		{
