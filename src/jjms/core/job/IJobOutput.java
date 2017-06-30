@@ -9,10 +9,16 @@ import java.io.IOException;
 public interface IJobOutput extends AutoCloseable
 {
 	/**
-	 * Add a new string entry to the Job output.
+	 * Writes a new string entry to the Job output.
 	 * @param output the string entry to add.
 	 */
-	public void add(String output);
+	public void write(String output);
+	
+	/**
+	 * Writes a new string entry to the Job output on a new line.
+	 * @param output the string entry to add.
+	 */
+	public void writeLine(String output);
 	
 	/**
 	 * {@inheritDoc}

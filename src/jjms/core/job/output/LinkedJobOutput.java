@@ -37,12 +37,22 @@ public class LinkedJobOutput implements IJobOutput
 	}
 	
 	@Override
-	public void add(String output)
+	public void write(String output)
 	{
 		mOutput.add(output);
 		for (IJobOutput out : mLinkedOutputs)
 		{
-			out.add(output);
+			out.write(output);
+		}
+	}
+	
+	@Override
+	public void writeLine(String output)
+	{
+		mOutput.add(output);
+		for (IJobOutput out : mLinkedOutputs)
+		{
+			out.writeLine(output);
 		}
 	}
 

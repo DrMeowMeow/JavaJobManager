@@ -77,11 +77,24 @@ class DefaultFileOutput implements IJobOutput
 	}
 	
 	@Override
-	public void add(String output)
+	public void write(String output)
 	{
 		try
 		{
 			mFileWriter.write(output);
+		}
+		catch (IOException e)
+		{
+			// TODO: Logging?
+		}
+	}
+	
+	@Override
+	public void writeLine(String output)
+	{
+		try
+		{
+			mFileWriter.write(output + System.lineSeparator());
 		}
 		catch (IOException e)
 		{
