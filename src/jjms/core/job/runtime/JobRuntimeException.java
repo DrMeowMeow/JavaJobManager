@@ -20,6 +20,7 @@ public class JobRuntimeException extends Exception
 	/**
 	 * Instantiates a new instance of the {@code JobRuntimeException} class.
 	 * @param message the error message for this exception.
+	 * @param source the source exception for this runtime exception.
 	 */
 	public JobRuntimeException(String message, Exception source)
 	{
